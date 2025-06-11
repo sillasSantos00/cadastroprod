@@ -1,5 +1,6 @@
 package org.fiap.produtos.Repository;
 
+import org.fiap.produtos.model.Categoria;
 import org.fiap.produtos.model.Produto;
 
 import javax.swing.*;
@@ -35,9 +36,13 @@ public class ProdutoCollectionRepository {
             produtos.add(produto);
             return produto;
         }else {
-            JOptionPane.showMessageDialog(null, "ja existe "
+            JOptionPane.showMessageDialog(null, "ja existe produto cadastrado "
             );
             return null;
         }
+    }
+
+    public static List<Produto> findByCategoria(Categoria categoria) {
+        return produtos.stream().filter(p->p.getCategoria().equals(categoria)).toList();
     }
 }

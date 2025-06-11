@@ -15,7 +15,7 @@ public class ProdutoView {
         Categoria categoria = null;
 
         do {
-            categoria = CategoriaView.form(produto.getCategoria());
+            categoria = CategoriaView.select(produto.getCategoria());
         }while (categoria==null);
 
         String nome = "";
@@ -36,7 +36,7 @@ public class ProdutoView {
 
         do {
         try {
-            preco = Double.parseDouble(JOptionPane.showInputDialog(null, "informe a descricao do produto", produto.getPreco()));
+            preco = Double.parseDouble(JOptionPane.showInputDialog(null, "informe a preco do produto", produto.getPreco()));
         }catch (Exception e) {
             preco= 0;
         }
@@ -53,8 +53,9 @@ public class ProdutoView {
     }
 
     public static void  sucesso () {
-        JOptionPane.showMessageDialog(null, "produto  salva");
+        JOptionPane.showMessageDialog(null, "produto  salvo");
     }
+
     public static void sucesso(Produto produto) {
         System.out.println(produto);
         JOptionPane.showMessageDialog(null, "produto " + produto.getNome().toUpperCase() + "foi salvo com sucesso ");
@@ -79,7 +80,7 @@ public class ProdutoView {
         show(produto);
 
     }
-    private static void show(Produto p) {
+    public static void show(Produto p) {
         System.out.println(p);
             String textoFormatado = String.format(
                     "PRODUTO: " + p.getNome() + System.lineSeparator() +
